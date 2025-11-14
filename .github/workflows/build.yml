@@ -40,8 +40,6 @@ jobs:
 
       - name: Setup HeadlessMc
         run: |
-          cd ../
-          ls -l
           mkdir -p run
           mv ./Modpack-Modern/mods ./run/
           mv ./Modpack-Modern/kubejs ./run/
