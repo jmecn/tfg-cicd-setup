@@ -3,7 +3,8 @@
   "steps": [
     {
       "type": "ENDS_WITH",
-      "message": "For help, type \"help\""
+      "message": "For help, type \"help\"",
+      "timeout": 300
     },
     {
       "type": "SEND",
