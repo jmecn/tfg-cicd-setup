@@ -1,0 +1,37 @@
+name: Project Build
+run-name: "📦 Project Build #${{ github.run_number }}"
+on:
+  push:
+    branches:
+      - master
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:    
+  setup:
+    name: Setup Modpack Modern
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5.0.0
+
+      - name: Checkout
+        uses: actions/checkout@v5.0.0
+        with:
+          repository: TerraFirmaGreg-Team/Modpack-Modern
+          path: ./Modpack-Modern
+
+      - name: Setup Java
+        uses: actions/setup-java@v5.0.0
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Build modpack
+        run: |
+          cd ./Modpach-Modern
+          java -jar pakku.jar fetch
+          ls -l ./mods
+          #java -jar pakku.jar export
