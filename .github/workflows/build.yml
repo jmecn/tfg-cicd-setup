@@ -31,7 +31,8 @@ jobs:
 
       - name: Build modpack
         run: |
-          cd ./Modpach-Modern
+          cd ./Modpack-Modern
+          git checkout dev
           java -jar pakku.jar fetch
           ls -l ./mods
           #java -jar pakku.jar export
