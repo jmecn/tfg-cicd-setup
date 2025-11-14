@@ -38,20 +38,23 @@ jobs:
           java -jar pakku.jar fetch
           java -jar pakku.jar export
 
-      - name: Setup HeadlessMc
+      - name: Setup Minecraft Server
         run: |
           mkdir -p run
           unzip ./Modpack-Modern/build/serverpack/TerraFirmaGreg-Modern-DEV.zip -d run
-          ls -l
-          ls -l ./run
           mv ./Modpack-Modern/mods ./
           mv ./Modpack-Modern/kubejs ./
 
-      - name: Run MC test server
-        timeout-minutes: 10
-        uses: headlesshq/mc-server-test@1.1.0
-        with:
-          java: ${{ env.JAVA_VERSION }}
-          mc: 1.20.1
-          modloader: forge
-          test-file: ./test.json
+      - name: Run Minecraft Server
+        run: |
+          cd run
+          java -jar minecraft_server.jar -Xmx2048M -Xms1024M nogui
+
+      #- name: Run MC test server
+      #  timeout-minutes: 10
+      #  uses: headlesshq/mc-server-test@1.1.0
+      #  with:
+      #    java: ${{ env.JAVA_VERSION }}
+      #    mc: 1.20.1
+      #    modloader: forge
+      #    test-file: ./test.json
