@@ -54,3 +54,4 @@ jobs:
           java: ${{ env.JAVA_VERSION }}
           mc: 1.20.1
           modloader: forge
+          test-file: ./test.json
