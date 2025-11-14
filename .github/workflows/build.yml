@@ -48,16 +48,16 @@ jobs:
           mv ./Modpack-Modern/mods ./
           mv ./Modpack-Modern/kubejs ./
 
-      - name: Run Minecraft Server
-        run: |
-          cd run
-          java -jar minecraft_server.jar -Xmx2048M -Xms1024M nogui
+      #- name: Run Minecraft Server
+      #  run: |
+      #    cd run
+      #    java -jar minecraft_server.jar -Xmx2048M -Xms1024M nogui
 
-      #- name: Run MC test server
-      #  timeout-minutes: 10
-      #  uses: headlesshq/mc-server-test@1.1.0
-      #  with:
-      #    java: ${{ env.JAVA_VERSION }}
-      #    mc: 1.20.1
-      #    modloader: forge
-      #    test-file: ./test.json
+      - name: Run MC test server
+        timeout-minutes: 10
+        uses: headlesshq/mc-server-test@1.1.0
+        with:
+          java: ${{ env.JAVA_VERSION }}
+          mc: 1.20.1
+          modloader: forge
+          test-file: ./test.json
